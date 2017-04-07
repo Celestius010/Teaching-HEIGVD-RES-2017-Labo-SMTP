@@ -42,7 +42,7 @@ public class Configuration {
                     messages.add(new String(message));
                     message = new String();
                 } else {
-                    message += line;
+                    message += line + "\n";
                 }
             }
 
