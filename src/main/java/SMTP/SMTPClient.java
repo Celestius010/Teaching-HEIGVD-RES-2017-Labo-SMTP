@@ -31,9 +31,8 @@ public class SMTPClient {
 
     public void sendMail(Mail mail) {
         Configuration config = Configuration.getInstance();
-        Socket socket = null;
         try {
-            socket = new Socket(config.smtpServerAddress(), config.smtpServerPort());
+            Socket socket = new Socket(config.smtpServerAddress(), config.smtpServerPort());
             BufferedOutputStream bw = new BufferedOutputStream(socket.getOutputStream());
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -61,7 +60,7 @@ public class SMTPClient {
             read(br);
 
             //EFFECTIVELY SENDING DATA
-            send(bw, data(mail.getMessage()));
+            send(bw, data(mail));
             read(br);
 
             //BYE BYE
@@ -77,8 +76,8 @@ public class SMTPClient {
 
     }
 
-    private String data(String message) {
-        return message + "\r\n.";
+    private String data(Mail mail) {
+        return "FROM:" + mail.getFrom() + "\r\n" + mail.getMessage() + "\r\n.";
     }
 
     private String from(String from) {

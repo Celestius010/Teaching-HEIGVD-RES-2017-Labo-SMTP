@@ -20,7 +20,6 @@ public class PrankGenerator {
     }
 
     public void generatePranks() {
-        System.out.println("Hey");
 
         if (victimsPerGroup >= 3) {
             ArrayList<String> messages = (ArrayList<String>) config.getMessages();

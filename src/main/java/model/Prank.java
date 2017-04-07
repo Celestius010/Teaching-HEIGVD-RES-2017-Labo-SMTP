@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class Prank {
     private Mail mail;
-    private String message;
 
     public Prank() {
         mail = new Mail();
